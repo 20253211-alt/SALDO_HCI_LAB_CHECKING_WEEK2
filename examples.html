@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNFILTERED | Photography Portfolio</title>
+    <style>
+        :root {
+            --color-bg: #0E0E10;
+            --color-surface: #18181B;
+            --color-surface-hover: #222226;
+            --color-border: #27272A;
+            --color-text-primary: #F4F4F5;
+            --color-text-secondary: #A1A1AA;
+            --color-text-muted: #71717A;
+            --color-accent: #D97706;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+
+        /* Header: Large Brand Top-Left, Divider Line, Centered Horizontal Nav Below */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 60px;
+            gap: 28px;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+
+        .brand img {
+            width: 170px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+
+        .brand-title h1 {
+            font-family: var(--font-heading);
+            font-size: 3.6rem;
+            letter-spacing: 0.18em;
+            font-weight: 400;
+            color: var(--color-text-primary);
+            line-height: 1.05;
+        }
+
+
+        .brand-title .sub-brand {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            color: var(--color-accent);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        nav {
+            width: 100%;
+            border-top: 1px solid var(--color-border);
+            padding-top: 26px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 12px 22px;
+            border-radius: 2px;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        nav a::after {
+            content: "›";
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            transition: transform 0.25s ease, color 0.25s ease;
+        }
+        nav a:hover, nav a.active {
+            color: var(--color-text-primary);
+            background-color: var(--color-surface-hover);
+            border-color: var(--color-accent);
+        }
+        nav a:hover::after, nav a.active::after {
+            color: var(--color-accent);
+            transform: translateY(2px);
+        }
+        h2 { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 400; margin-bottom: 12px; }
+        .subtitle { color: var(--color-text-secondary); margin-bottom: 40px; }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--color-text-primary);
+            margin: 50px 0 20px 0;
+            border-left: 3px solid var(--color-accent);
+            padding-left: 14px;
+        }
+
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+        .photo-card {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 22px;
+            transition: border-color 0.25s ease;
+        }
+        .photo-card:hover { border-color: #3F3F46; }
+        .thumb {
+            width: 100%;
+            height: 220px;
+            background-color: #121215;
+            border: 1px dashed #3F3F46;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .photo-card h3 { font-family: var(--font-heading); font-weight: 400; font-size: 1.2rem; margin-bottom: 4px; }
+        .photo-card p { color: var(--color-text-secondary); font-size: 0.88rem; }
+        
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding-top: 30px;
+            margin-top: 80px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <div class="brand">
+            <img src="IMAGE1.jpeg" alt="UNFILTERED Photography Logo">
+            <div class="brand-title">
+                <h1>UNFILTERED</h1>
+                <span class="sub-brand">Photography</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="featured.html">Featured</a>
+            <a href="examples.html" class="active">Picture Examples</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+
+    <h2>Categorized Picture Examples</h2>
+    <p class="subtitle">Different Examples and Categories of Shots</p>
+
+
+    <!-- 1. WEDDINGS (5 Examples) -->
+    <div class="section-title">Weddings Gallery (5 Examples)</div>
+    <div class="gallery-grid">
+        <div class="photo-card">
+            <div class="thumb">[ Wedding Photo 01 ]</div>
+            <h3>01. Garden Ceremony Vows</h3>
+            <p>Natural daylight &mdash; Intimate outdoor setting</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Wedding Photo 02 ]</div>
+            <h3>02. First Kiss &amp; Celebration</h3>
+            <p>Joyful candid moment &mdash; Church altar framing</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Wedding Photo 03 ]</div>
+            <h3>03. Sunset Couple Session</h3>
+            <p>Golden hour glow &mdash; Scenic Luzon backdrop</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Wedding Photo 04 ]</div>
+            <h3>04. Reception First Dance</h3>
+            <p>Warm ambient lighting &mdash; Unscripted emotion</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Wedding Photo 05 ]</div>
+            <h3>05. Bridal Details &amp; Prep</h3>
+            <p>Documentary style &mdash; Raw textured elements</p>
+        </div>
+    </div>
+
+
+    <!-- 2. BAPTISM (5 Examples) -->
+    <div class="section-title">Baptism Gallery (5 Examples)</div>
+    <div class="gallery-grid">
+        <div class="photo-card">
+            <div class="thumb">[ Baptism Photo 01 ]</div>
+            <h3>01. Sacred Water Blessing</h3>
+            <p>Soft church light &mdash; Traditional ceremony</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Baptism Photo 02 ]</div>
+            <h3>02. Family Warmth &amp; Joy</h3>
+            <p>Candid group framing &mdash; Altar backdrop</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Baptism Photo 03 ]</div>
+            <h3>03. Little Hands &amp; Details</h3>
+            <p>Macro storytelling &mdash; Candid innocence</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Baptism Photo 04 ]</div>
+            <h3>04. Reception Celebration</h3>
+            <p>Indoor natural light &mdash; Family luncheon</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Baptism Photo 05 ]</div>
+            <h3>05. Peaceful Moments</h3>
+            <p>Unscripted portrait &mdash; Baby dedication</p>
+        </div>
+    </div>
+
+
+    <!-- 3. BIRTHDAYS (5 Examples) -->
+    <div class="section-title">Birthdays Gallery (5 Examples)</div>
+    <div class="gallery-grid">
+        <div class="photo-card">
+            <div class="thumb">[ Birthday Photo 01 ]</div>
+            <h3>01. Grand Entrance &amp; Energy</h3>
+            <p>Dynamic event lighting &mdash; Milestone party</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Birthday Photo 02 ]</div>
+            <h3>02. Candle Blowing &amp; Wishes</h3>
+            <p>Low ambient glow &mdash; Genuine reaction</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Birthday Photo 03 ]</div>
+            <h3>03. Candid Guest Interactions</h3>
+            <p>Documentary framing &mdash; Lively atmosphere</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Birthday Photo 04 ]</div>
+            <h3>04. Solo Milestone Portrait</h3>
+            <p>Styled backdrop &mdash; Celebrant spotlight</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Birthday Photo 05 ]</div>
+            <h3>05. Family &amp; Friends Toast</h3>
+            <p>Warm celebratory tones &mdash; Cheers moment</p>
+        </div>
+    </div>
+
+
+    <!-- 4. GRADUATION (5 Examples) -->
+    <div class="section-title">Graduation Gallery (5 Examples)</div>
+    <div class="gallery-grid">
+        <div class="photo-card">
+            <div class="thumb">[ Graduation Photo 01 ]</div>
+            <h3>01. Campus Commencement</h3>
+            <p>Outdoor natural daylight &mdash; University grounds</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Graduation Photo 02 ]</div>
+            <h3>02. Cap Toss Celebration</h3>
+            <p>High-speed action &mdash; Group triumph</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Graduation Photo 03 ]</div>
+            <h3>03. Formal Studio Portrait</h3>
+            <p>Controlled studio light &mdash; Crisp official toga shot</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Graduation Photo 04 ]</div>
+            <h3>04. Family Gratitude Hug</h3>
+            <p>Candid emotion &mdash; Proud parents moment</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Graduation Photo 05 ]</div>
+            <h3>05. Diploma Details &amp; Pride</h3>
+            <p>Editorial framing &mdash; Individual milestone</p>
+        </div>
+    </div>
+
+
+    <!-- 5. PORTRAITS (5 Examples) -->
+    <div class="section-title">Portraits Gallery (5 Examples)</div>
+    <div class="gallery-grid">
+        <div class="photo-card">
+            <div class="thumb">[ Portrait Photo 01 ]</div>
+            <h3>01. Window Light Expression</h3>
+            <p>Natural window lighting &mdash; 50mm f/1.8 prime lens</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Portrait Photo 02 ]</div>
+            <h3>02. Minimalist Monochrome</h3>
+            <p>High contrast black &amp; white &mdash; Clean studio style</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Portrait Photo 03 ]</div>
+            <h3>03. Golden Hour Outdoor</h3>
+            <p>Sunset natural glow &mdash; Warm skin tones</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Portrait Photo 04 ]</div>
+            <h3>04. Creative Shadow Play</h3>
+            <p>Low-key artistic lighting &mdash; Moody aesthetic</p>
+        </div>
+        <div class="photo-card">
+            <div class="thumb">[ Portrait Photo 05 ]</div>
+            <h3>05. Lifestyle Environment</h3>
+            <p>On-location Cordillera vibe &mdash; Authentic storytelling</p>
+        </div>
+    </div>
+
+
+    <footer>
+        <span>&copy; RAW OF 2026 UNFILTERED Photography. All rights reserved.</span>
+        <span>Luzon Visual Archive &bull; Complete Categories Gallery</span>
+    </footer>
+
+
+</body>
+</html>

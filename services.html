@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services &amp; Packages | UNFILTERED</title>
+    <style>
+        :root {
+            --color-bg: #0E0E10;
+            --color-surface: #18181B;
+            --color-surface-hover: #222226;
+            --color-border: #27272A;
+            --color-text-primary: #F4F4F5;
+            --color-text-secondary: #A1A1AA;
+            --color-text-muted: #71717A;
+            --color-accent: #D97706;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 60px;
+            gap: 28px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        .brand img {
+            width: 170px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .brand-title h1 {
+            font-family: var(--font-heading);
+            font-size: 3.6rem;
+            letter-spacing: 0.18em;
+            font-weight: 400;
+            color: var(--color-text-primary);
+            line-height: 1.05;
+        }
+        .brand-title .sub-brand {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            color: var(--color-accent);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        nav {
+            width: 100%;
+            border-top: 1px solid var(--color-border);
+            padding-top: 26px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 12px 22px;
+            border-radius: 2px;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        nav a::after {
+            content: "›";
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            transition: transform 0.25s ease, color 0.25s ease;
+        }
+        nav a:hover, nav a.active {
+            color: var(--color-text-primary);
+            background-color: var(--color-surface-hover);
+            border-color: var(--color-accent);
+        }
+        nav a:hover::after, nav a.active::after {
+            color: var(--color-accent);
+            transform: translateY(2px);
+        }
+        h2 { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 400; margin-bottom: 12px; }
+        .subtitle { color: var(--color-text-secondary); margin-bottom: 40px; max-width: 750px; }
+        
+        .service-list { display: grid; gap: 32px; }
+        .service-item {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 24px;
+            transition: border-color 0.25s ease;
+        }
+        .service-item:hover { border-color: #3F3F46; }
+        .service-info { max-width: 720px; }
+        .service-info h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; margin-bottom: 8px; color: var(--color-text-primary); }
+        .service-info p { color: var(--color-text-secondary); font-size: 0.98rem; margin-bottom: 16px; }
+        .service-info ul { list-style: none; color: var(--color-text-muted); font-size: 0.9rem; display: grid; gap: 6px; }
+        .service-info li::before { content: "— "; color: var(--color-accent); }
+        
+        .price-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+        .price-tag {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-accent);
+            border: 1px solid var(--color-border);
+            padding: 12px 20px;
+            background-color: var(--color-bg);
+            text-align: right;
+        }
+        .book-btn {
+            text-decoration: none;
+            background-color: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 10px 18px;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            transition: all 0.25s ease;
+        }
+        .book-btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding-top: 30px;
+            margin-top: 80px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <div class="brand">
+            <img src="IMAGE1.jpeg" alt="UNFILTERED Photography Logo">
+            <div class="brand-title">
+                <h1>UNFILTERED</h1>
+                <span class="sub-brand">Photography</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="featured.html">Featured</a>
+            <a href="examples.html">Picture Examples</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+
+    <h2>Services &amp; Packages</h2>
+    <p class="subtitle">Mga propesyonal na photography packages para sa mga espesyal na okasyon at portrait sessions sa buong Luzon. Ang bawat package ay dinisenyo na may malinaw na inclusions at natural storytelling.</p>
+
+
+    <div class="service-list">
+        <!-- 1. Wedding Package -->
+        <div class="service-item">
+            <div class="service-info">
+                <h3>01. Wedding Coverage Package</h3>
+                <p>Comprehensive documentation ng iyong kasalan mula sa preparation hanggang sa reception, na may cinematic at documentary style.</p>
+                <ul>
+                    <li>Full day coverage (Prep to Reception)</li>
+                    <li>2 Professional photographers + 1 Assistant</li>
+                    <li>All high-resolution edited photos in digital format (Cloud Gallery)</li>
+                    <li>Custom wooden USB box with selected printed prints</li>
+                    <li>Free engagement / pre-wedding shoot session within Luzon</li>
+                </ul>
+            </div>
+            <div class="price-box">
+                <div class="price-tag">₱25,000 / Package</div>
+                <a href="contact.html" class="book-btn">Book Wedding</a>
+            </div>
+        </div>
+
+
+        <!-- 2. Baptism Package -->
+        <div class="service-item">
+            <div class="service-info">
+                <h3>02. Baptism &amp; Dedication Package</h3>
+                <p>Pagkuha ng mga banal na sandali ng bautismo ng iyong anak at ang kasunod na pagsasalo ng pamilya.</p>
+                <ul>
+                    <li>Up to 4 hours coverage (Ceremony &amp; Luncheon/Reception)</li>
+                    <li>1 Professional photographer</li>
+                    <li>50+ Fully edited high-resolution digital copies</li>
+                    <li>Online digital gallery access for family and guests</li>
+                </ul>
+            </div>
+            <div class="price-box">
+                <div class="price-tag">₱8,500 / Package</div>
+                <a href="contact.html" class="book-btn">Book Baptism</a>
+            </div>
+        </div>
+
+
+        <!-- 3. Birthday Package -->
+        <div class="service-item">
+            <div class="service-info">
+                <h3>03. Birthday &amp; Milestone Celebration</h3>
+                <p>Masiglang dokumentasyon para sa mga kaarawan, debut, o anniversary na may kasamang mini portrait session.</p>
+                <ul>
+                    <li>Up to 5 hours event coverage</li>
+                    <li>1 Lead photographer + 1 Event coordinator/assistant</li>
+                    <li>Full color grading and retouching of event highlights</li>
+                    <li>Online gallery + USB flash drive delivery</li>
+                </ul>
+            </div>
+            <div class="price-box">
+                <div class="price-tag">₱10,000 / Package</div>
+                <a href="contact.html" class="book-btn">Book Birthday</a>
+            </div>
+        </div>
+
+
+        <!-- 4. Graduation Package -->
+        <div class="service-item">
+            <div class="service-info">
+                <h3>04. Graduation Coverage &amp; Portraits</h3>
+                <p>Isang espesyal na package para sa iyong pagtatapos sa kolehiyo o hayskul, kasama ang campus shots at family portraits.</p>
+                <ul>
+                    <li>On-campus or studio session (up to 3 hours)</li>
+                    <li>Individual graduation portraits &amp; family group shots</li>
+                    <li>30 High-resolution professionally edited digital files</li>
+                    <li>Print-ready wallet size &amp; 8x10 portrait prints included</li>
+                </ul>
+            </div>
+            <div class="price-box">
+                <div class="price-tag">₱6,000 / Package</div>
+                <a href="contact.html" class="book-btn">Book Graduation</a>
+            </div>
+        </div>
+
+
+        <!-- 5. Portrait Series -->
+        <div class="service-item">
+            <div class="service-info">
+                <h3>05. Creative &amp; Editorial Portrait Series</h3>
+                <p>Personalized portrait session na nakatutok sa natural window light, minimalist framing, at personal o creative branding.</p>
+                <ul>
+                    <li>2-hour on-location or studio portrait session</li>
+                    <li>20 High-resolution retouched digital photographs</li>
+                    <li>Custom film-inspired color grading profiles</li>
+                    <li>Web and print-optimized exports</li>
+                </ul>
+            </div>
+            <div class="price-box">
+                <div class="price-tag">₱4,500 / Session</div>
+                <a href="contact.html" class="book-btn">Book Portrait</a>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <span>&copy; RAW OF 2026 UNFILTERED Photography. All rights reserved.</span>
+        <span>Luzon Coverage &bull; Professional Photography Services</span>
+    </footer>
+
+
+</body>
+</html>
